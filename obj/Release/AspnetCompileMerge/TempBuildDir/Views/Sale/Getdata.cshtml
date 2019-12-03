@@ -1,0 +1,762 @@
+﻿@using BAL;
+
+@model IEnumerable<BAL.products>
+@{
+    Layout = null;
+  
+}
+@{
+
+    ViewBag.Title = "Employee Data";
+    var products = (IEnumerable<products>)ViewData["products"];
+
+    var salesresp = (IEnumerable<salesResp>)ViewData["salesresp"];
+
+    var enteredBy = (IEnumerable<EnteredBy>)ViewData["lstenteredBy"];
+
+}
+
+ 
+
+@foreach (var item in products)
+{
+
+    ViewBag.Tablename = item.gettblname();
+    ViewBag.MfgPartNum = item.MfgPartNum;
+    ViewBag.id = item.ID;
+    ViewBag.description = item.Description;
+
+}
+
+@foreach (var item in salesresp)
+{
+    ViewBag.salestblname = item.gettblname();
+    ViewBag.salesrespid = item.ID;
+    ViewBag.salesname = item.Name;
+
+}
+
+@foreach (var item in salesresp)
+{
+    ViewBag.salestblname = item.gettblname();
+    ViewBag.salesrespid = item.ID;
+    ViewBag.salesname = item.Name;
+
+}
+
+
+@foreach (var item in enteredBy)
+{
+    ViewBag.EnteredBytblname = item.gettblname();
+    ViewBag.Username = item.Username;
+    ViewBag.SystemName = item.SystemName;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sales Order</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel="stylesheet">
+
+
+    <link href="~/Scripts/jqui/jquery-ui.css" rel="stylesheet" />
+
+    <link href="~/dist/css/custom.css" rel="stylesheet" />
+    <link href="~/dist/css/salesorder.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container">
+        <div class="row icon_container">
+            <input id="btncreateorder" type="button" onclick="winOpen(`@Url.Action("placeorder", "sale", new { documnettype = "1", customerservicerepid = "geneva" })`)" class="btn btn-primary" value="place order" />
+            <i class="fa fa-play" aria-hidden="true"></i>
+            <i class="fa fa-play reverse" aria-hidden="true"></i>
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            <i class="fa fa-step-forward" aria-hidden="true"></i>
+            <i class="fa fa-step-backward" aria-hidden="true"></i>
+        </div>
+    </div>
+    @*<input  type="button" onclick="placeOrder()"   class="btn btn-primary" value="Place Order" />*@
+
+
+    <div class="container">
+        <hr />
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <b> Sales Team</b>
+            </div>
+            <div class="col-sm-3">
+                <select id="ddlgroup" Column="Customers.GroupID"><option>Select Item</option></select>
+            </div>
+            <div class="col-sm-3">
+                <b>Ship-To Customer ID:</b>
+            </div>
+            <div class="col-sm-3">
+                <input id="txtShiptocustID" type="text" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <b> Status:</b>
+            </div>
+            <div class="col-sm-3">
+                <select id="ddlstatus"><option>Select Item</option></select>
+            </div>
+            <div class="col-sm-3">
+                <b>Ship-To Customer Name:</b>
+            </div>
+            <div class="col-sm-3">
+                <input id="txtShiptocustName" type="text" />
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <b> Warehouse: </b>
+            </div>
+            <div class="col-sm-3">
+                <select id="ddlwarehouse"><option>Select Item</option></select>
+            </div>
+            <div class="col-sm-3">
+                <b>Ship-To Customer Zip Code:</b>
+            </div>
+            <div class="col-sm-3">
+                <input id="txtShiptocustZipCode" type="text" />
+            </div>
+        </div>
+
+        <div class="row form-group ">
+            <div class="col-sm-3 ">
+                <b>Order Date (Header):From </b>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="tbFromDateOrder" /> &nbsp;
+                <img id="imgorderdate" class="cal" src="~/Image/cal.png" />
+            </div>
+            <div class="col-sm-3">
+                <b>Through :</b>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="tbthroughDateOrder" />
+                <img id="imgorderdateto" class="cal" src="~/Image/cal.png" />
+            </div>
+        </div>
+
+        @*<input type="button" title="Delete" value="D" onclick="location.href='@Url.Action("Delete", "movies", new { id = item.ID })'" />*@
+
+
+
+        <div class="row form-group">
+            <div class="col-sm-3">
+                @*<b style="color:dodgerblue"> <input type="button" class="border-remove" title="Mfg's Part Number:" value="Mfg's Part Number:" onclick="window.open('@Url.Action("MfgpartNumbercall", "sale",new { tblname = ViewBag.Tablename,colname=ViewBag.MfgPartNum })')" /> </b>*@
+                <b style="color:dodgerblue"> <input type="button" class="border-remove" title="Mfg's Part Number:" value="Mfg's Part Number:" onclick="winOpen('@Url.Action("MfgpartNumbercall", "sale", new { tblname = ViewBag.Tablename, colname = ViewBag.MfgPartNum })')" /> </b>
+            </div>
+            <div class="col-sm-3">
+                <input id="txtmnfprtnum" type="text" value="@TempData["actiontransferdata"]" />
+            </div>
+            <div class="col-sm-3">
+                <b>Ship-To Customer Zip Code:</b>
+            </div>
+            <div class="col-sm-3">
+                <input id="txtShiptocustZipCode" type="text" />
+            </div>
+        </div>
+
+        <div class="row form-group ">
+            <div class="col-sm-3 ">
+                <b>Required Date (Lines):From </b>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="tbFromDate" />
+                <img id="imgFromDatereqired" class="cal" src="~/Image/cal.png" />
+            </div>
+            <div class="col-sm-3">
+                <b>Through :</b>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="tbthroughDate" />
+                <img id="imgtoDatereqired" class="cal" src="~/Image/cal.png" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-3" style="color:dodgerblue">
+                @*<b style="color:dodgerblue">    Item Number:   </b>*@
+                <b>  <input type="button" class="border-remove" title="Item Number:" value="Item Number:" onclick="winOpen('@Url.Action("Itemnumber", "sale", new { tblname = ViewBag.Tablename, id = ViewBag.id, description = ViewBag.description })')" /> </b>
+            </div>
+            <div class="col-sm-3">
+                <input id="txtItemNum" type="text" value="@TempData["itemnumbercalltransferdata"]" />
+            </div>
+            <div class="col-sm-3">
+                <b style="color:dodgerblue">
+                    <b>  <input type="button" class="border-remove" title="Sales Rep:" value=" Sales Rep:" onclick="winOpen('@Url.Action("salesResp", "sale", new { tblname = ViewBag.salestblname, salesrespid = ViewBag.salesrespid, salesname = ViewBag.salesname })')" /> </b>
+
+                </b>
+            </div>
+            <div class="col-sm-3">
+                <input id="TxtsalesResp" type="text" value="@TempData["salesresptransferdata"]" />
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <b>  PO Number:   </b>
+            </div>
+            <div class="col-sm-3">
+                <input id="txtPonum" type="text" />
+            </div>
+            <div class="col-sm-3">
+                <b>
+
+                    Has Credit Hold:
+                </b>
+            </div>
+            <div class="col-sm-3">
+                <input id="Txtcredithold" type="text" />
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <b>  Alternate PO:   </b>
+            </div>
+            <div class="col-sm-3">
+                <input id="txtaltponum" type="text" />
+            </div>
+            <div class="col-sm-3">
+                <b>
+                    Carrier:
+                </b>
+            </div>
+            <div class="col-sm-3">
+                <select id="ddlcarrier"><option>Select Item</option></select>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <b style="color:dodgerblue"> Bill-To Customer:   </b>
+            </div>
+            <div class="col-sm-3">
+                <input id="txtBillTocust" autocomplete="on" onkeydown="getautocomplete()" type="text" />
+            </div>
+            <div class="col-sm-3">
+                <b>
+                    Shipping Method:
+                </b>
+            </div>
+            <div class="col-sm-3">
+                <select id="ddlshipmethod"><option>Select Item</option></select>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-3" style="color:dodgerblue">
+                @*<b style="color:dodgerblue"> Entered By:   </b>*@
+                <b>  <input type="button" class="border-remove" title="Entered By:" value=" Entered By: " onclick="winOpen('@Url.Action("EnteredBy", "sale", new { tblname = ViewBag.EnteredBytblname, UserId = ViewBag.Username, Systemname = ViewBag.SystemName })')" /> </b>
+
+            </div>
+            <div class="col-sm-3">
+                <input id="txtEnteredBy" type="text" />
+            </div>
+            <div class="col-sm-3">
+                <b>
+                    BackOrder:
+                </b>
+            </div>
+            <div class="col-sm-3">
+                <select id="ddlBackOrder">
+                    <option  id="0">-----</option>
+                    <option value="0"  id="1">No</option>
+                    <option value="1" id="2">Yes</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <b>Customer Service Rep:   </b>
+            </div>
+            <div class="col-sm-3">
+                <input id="txtcustserviceResp" type="text" />
+            </div>
+            <div class="col-sm-3">
+                <b>
+                    Printed:
+                </b>
+            </div>
+            <div class="col-sm-3">
+                <select id="ddlprinted">
+                    <option id="0">-----</option>
+                    <option id="1">No</option>
+                    <option id="2">Yes</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <b>Company:   </b>
+            </div>
+            <div class="col-sm-3">
+                <select id="ddlCompany">
+                    <option id="0">-----</option>
+                    <option id="1">No</option>
+                    <option id="2">Yes</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <b>
+
+                </b>
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row form-group">
+            <div class="col-sm-6">
+                <b>Order ID:  </b>&nbsp;&nbsp;&nbsp;
+                <input id="txtOrderID" type="text" />
+            </div>
+            <div class="col-sm-6">
+                <input id="btnGo" type="button" onclick="postdata()" class="btn btn-primary" value="GO" />
+
+                <input id="btnsearch" type="button" onclick="searchdataBtn()" class="btn btn-primary" value="Search" />
+
+                <input id="btnclear" type="button" onclick="Cleardata()" class="btn btn-primary" value="Clear" />
+
+            </div>
+
+        </div>
+    </div>
+    <hr />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                OrderID
+                            </th>
+                            <th>
+                                Order Date
+                            </th>
+                            <th>
+                                Bill To Customer
+                            </th>
+                            <th>
+                                Ship To Customer
+                            </th>
+                            <th>
+                                Order Status
+                            </th>
+                            <th>
+                                PO Number
+                            </th>
+                            <th>
+                                Backordered
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="tbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="~/Scripts/projjs.js"></script>
+
+    @*<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>*@
+
+    <script src="~/Scripts/jqui/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#tbFromDate").datepicker(); 
+            $("#tbthroughDate").datepicker();
+            $("#tbFromDateOrder").datepicker();
+            $("#tbthroughDateOrder").datepicker();
+            //$("#tbDate").datepicker("show");
+           
+
+            ///
+        });
+        function Cleardata() {
+          
+            $('input[type=text]').val('');
+            $('#textarea').val('');
+            $('input[type=select]').val('');
+            $('input[type=radio]').val('');
+            $('input[type=checkbox]').val('');
+        }
+    
+    function postdata(location) {
+          
+            var DATA = 'OrderStatus=Orderstatusaval&WrhsID=WrhsIDval&NewShipToID=NewShipToIDval&ShipName=ShipNameval&ShipPostalCode=ShipPostalCodeval&OrderDate=OrderDateval&SalesRepID=SalesRepIDval&PONumber=PONumberval&AltPONumber=AltPONumberval&CustomerID=CustomerIDval&ID=IDval';
+            //  var OrderStatus = document.getElementById(ddlstatus).selectedValue.text;
+            var OrderStatus = getdropdowntext(ddlstatus);
+            // var WrhsID = document.getElementById(ddlwarehouse).selectedValue.text;
+            var WrhsID = getdropdownval(ddlwarehouse);
+            var NewShipToID = $("#txtShiptocustID").val();
+            var ShipName = $("#txtShiptocustName").val();
+            var ShipPostalCode = $("#txtShiptocustZipCode").val();
+            var OrderDate = $("#tbFromDateOrder").val();
+            var SalesRepID = $("#TxtsalesResp").val();
+            var PONumber = $("#txtPonum").val();
+            var AltPONumber = $("#txtaltponum").val();
+            var CustomerID = $("#txtBillTocust").val();
+            var ID = $("#txtOrderID").val();
+            /* url = url.replace(Orderstatusaval, Username ); */
+            if (OrderStatus) {
+
+                DATA = DATA.replace("Orderstatusaval", OrderStatus);
+                DATA = DATA.trim();
+            } else {
+                
+                DATA = DATA.replace("Orderstatusaval", "null");
+                DATA = DATA.trim();
+            }
+            if (WrhsID) {
+                DATA = DATA.replace("WrhsIDval", WrhsID);
+                DATA = DATA.trim();
+            } else {
+                DATA = DATA.replace("WrhsIDval", "null");
+                DATA = DATA.trim();
+            }
+
+            if (NewShipToID) {
+                DATA = DATA.replace("NewShipToIDval", NewShipToID);
+                DATA = DATA.trim();
+            } else {
+                DATA = DATA.replace("NewShipToIDval", "null");
+                DATA = DATA.trim();
+            }
+            if (ShipName) {
+                DATA = DATA.replace("ShipNameval", ShipName);
+                DATA = DATA.trim();
+            } else {
+                DATA = DATA.replace("ShipNameval", "null");
+                DATA = DATA.trim();
+            }
+
+            if (ShipPostalCode) {
+                DATA = DATA.replace("ShipPostalCodeval", ShipPostalCode);
+                DATA = DATA.trim();
+            } else {
+                DATA = DATA.replace("ShipPostalCodeval", "null");
+                DATA = DATA.trim();
+            }
+            if (OrderDate) {
+                DATA = DATA.replace("OrderDateval", OrderDate);
+                DATA = DATA.trim();
+            } else {
+                DATA = DATA.replace("OrderDateval", "null");
+                DATA = DATA.trim();
+            }
+            if (SalesRepID) {
+                DATA = DATA.replace("SalesRepIDval", SalesRepID);
+                DATA = DATA.trim();
+            } else {
+                DATA = DATA.replace("SalesRepIDval", "null");
+                DATA = DATA.trim();
+            }
+            if (PONumber) {
+
+                DATA = DATA.replace("PONumberval", PONumber);
+                DATA = DATA.trim();
+            }
+            else {
+
+                DATA = DATA.replace("PONumberval", "null");
+            }
+
+            if (AltPONumber) {
+                DATA = DATA.replace("AltPONumberval", AltPONumber);
+                DATA = DATA.trim();
+            } else {
+                DATA = DATA.replace("AltPONumberval", "null");
+                DATA = DATA.trim();
+            }
+            if (CustomerID) {
+                DATA = DATA.replace("CustomerIDval", CustomerID);
+                DATA = DATA.trim();
+            } else {
+                DATA = DATA.replace("CustomerIDval", "null");
+                DATA = DATA.trim();
+            }
+
+            if (ID) {
+                DATA = DATA.replace("IDval", ID);
+                DATA = DATA.trim();
+            } else {
+                DATA = DATA.replace("IDval", "null");
+                DATA = DATA.trim();
+            }
+
+            DATA = DATA.trim();
+
+            $.ajax({
+
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/sale/HitDataToFilter/",
+                data: DATA,
+
+                success: function (result) {
+                    var html = '';
+
+                    var result = JSON.parse(result);
+                    for (var j = 0; j < result.length; j++) {
+
+                        html += `<tr>
+                                                        <td> <a href="@Url.Action()">${result[j].ID}</a></td>
+                                                         <td>${result[j].OrderDate}</td>
+                                                         <td>${result[j].CustomerID}</td>
+                                                         <td>${result[j].NewShipToID}</td>
+                                                          <td>${result[j].OrderStatus}</td>
+                                                          <td>${result[j].PONumber}</td>
+                                                          <td>${result[j].BackOrder}</td>
+                                                          </tr>`;
+                    }
+                    $('.tbody').html(html);
+            }
+        });
+        }
+        function getdropdownval(dropdowname) {
+            var data = $(dropdowname).find(":selected").val();
+            return data;
+        }
+        function getdropdowntext(dropdowname) {
+            var data = $(dropdowname).find(":selected").text();
+            return data;
+        }
+
+        function searchdataBtn() {
+          
+            var DATA = 'OrderID=OrderIDVal';
+            DATA = DATA.replace("OrderIDVal", $("#txtOrderID").val());
+            $.ajax({
+
+                type: "GET",
+                url: "/sale/Searchdata/",
+                data: DATA,
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    var html = '';
+                    var result = JSON.parse(result);
+
+                     @*<td><a href="@Url.Action("opensaleorderCntrl", "sale", new { documnettype = "1", customerservicerepid = "geneva" })"> ${result[j].ID}<a/></td>*@
+                    //<td id="orderwise"> ${result[j].ID}</td>
+                    var getorderId = "";
+
+                    for (var j = 0; j < result.length; j++) {
+
+                        var url = "@Url.Action("opensaleorderCntrl", "sale", new { documnettype = "1", customerservicerepid = "geneva", OrderID= "iop" })";
+                        url = url.replace("iop", encodeURIComponent(result[j].ID));
+                        url = url.replace("&amp;", "&");
+                        url = url.replace("&amp;", "&");
+                        url = url.trim();
+                        html += `<tr>
+                       <td><a href="${url}"> ${result[j].ID}<a/></td>
+                       <td>${result[j].OrderDate}</td>
+                       <td>${result[j].CustomerID}</td>
+                      <td>${result[j].NewShipToID}</td>
+                       <td>${result[j].OrderStatus}</td>
+                       <td>${result[j].PONumber}</td>
+                      <td>${result[j].BackOrder}</td>
+                        </tr>`;
+                    }
+                    $('.tbody').html(html);
+                }
+
+            });
+        }
+
+       function getautocomplete() {
+            $('#txtBillTocust').autocomplete({
+                source: function (request, response) {
+
+                    var obj = {};
+                    obj.term = request.term;
+                    var jsonData = JSON.stringify(obj);
+                    $.ajax({
+                        url: "/sale/Handler/Jqfastretrival.ashx",
+                        type: "POST",
+                        data: jsonData,
+                        success: function (data) {
+                            //console.log("result", data);
+                            //response($.map(data, function (item) {
+                            //    return {
+                            //        company: item.company,
+                            //        ID: item.ID
+
+                            //    }
+                            //}))
+                            var parsedata = JSON.parse(data);
+                            var nameArray = $.map(parsedata, function (item) {
+                                return { company: item.company, ID: item.ID };
+                            });
+                            response(nameArray);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert(textStatus);
+                        }
+                    });
+                },
+                focus: function (event, ui) {
+                    $('#txtBillTocust').val(ui.item.ID);
+                    return false;
+                },
+                select: function (event, ui) {
+                    $('#txtBillTocust').val(ui.item.ID);
+                    return false;
+                },
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li>")
+                    .append("<a>Company:" + item.company + "<br>ID: " + item.ID + "</a>")
+                    .appendTo(ul);
+            };
+        }
+    function winOpen(url) {
+            //-to open the selected url at once time
+            //return window.open(url, getWinName(url), 'left=30,top=30,width=1300,height=650,toolbar=1,resizable=0');
+            var popup;
+            //-to open the selected url at once time
+            //return window.open(url, getWinName(url), 'left=30,top=30,width=1300,height=650,toolbar=1,resizable=0');
+            popup = window.open(url, getWinName(url), 'left=30,top=30,width=1300,height=650,toolbar=1,resizable=0');
+            popup.focus();
+        }
+        function winClose(url) {
+            var win = window.open("", getWinName(url));
+            win.close();
+        }
+        function getWinName(url) {
+            return "win" + url.replace(/[^A-Za-z0-9\-\_]*/g, "");
+        }
+     function orderplacement() {
+
+            alert('Fired');
+        }
+    function placeOrder() {
+
+            var Dummydata = '';
+            alert('Place Order');
+        $.ajax({
+
+             type: "GET",
+         contentType: "application/json; charset=utf-8",
+
+                 url: "/Sale/opensaleorderCntrl/",
+                 data:'Documnettype=1&CustomerServiceRepID=geneva',
+           success: function (data) {
+
+                             console.log("result", data);
+
+        }
+              });
+
+ }
+
+
+
+
+        //function OrderWise(OID) {
+
+        //$.ajax({
+
+        //         type: "GET",
+        //        contenttype: "application/json; charset=utf-8",
+        //        url: "/sale/opensaleorderCntrl/",
+        //        //data: 'Documnettype=1&CustomerServiceRepID=geneva&OrderID=' + OID,
+        //    success: function (result) {
+        //        //Url.Action("opensaleorderCntrl", "sale", new { documnettype = "1", customerservicerepid = "geneva", OrderID =  })
+        //        var urlact=
+        //            window.location.href = '';
+        //            for (var j = 0; j < result.length; j++) {
+
+        //                    html += `<tr>
+        //                      <td> ${result[j].ID} </td>
+        //                      <td> ${result[j].OrderDate} </td>
+        //                      <td> ${result[j].company} </td>
+        //                                                  </tr>`;
+        //            }
+        //            $('.tbody').html(html);
+        //        }
+        //    });
+
+
+
+        //}
+
+
+
+
+
+        //$('#orderwise').click(function () {
+        //    alert("dfsdf");
+        //    OrderWise();
+
+        //});
+
+        @*$('.tbody ').on('click', '#orderwise', function () {
+
+
+
+          //  var id = $(this).attr('value');
+            var id = $(this).text();
+            alert(id);
+            var url = '@Url.Action("opensaleorderCntrl", "sale", new { documnettype = "1", customerservicerepid = "geneva", OrderID = "nueid" })';
+            var newurl = url.replace("nueid", id).trim();
+            alert(newurl);
+            window.location.href = newurl;
+
+            alert(id);
+
+            OrderWise(id);
+            });
+
+        function getvalue(value) {
+
+            return value;
+        }*@
+
+
+
+     //$('.table tbody ').on('click', 'tr', function () {
+
+     //    $.ajax({
+
+     //        type: "get",
+     //        contenttype: "application/json; charset=utf-8",
+     //        url: "/sale/opensaleorderCntrl/",
+     //        data: "{'id':'data'}"
+     //        success: function (res) {
+
+     //            alert("open fired ");
+
+     //        }
+
+
+     //    });
+
+     //});
+
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BAL.OrderAtTable>
+
+
+<table class="table">
+    <tr>
+        <td class="orderid">
+          ID
+        </td>
+        <td>
+            OrderDate
+        </td>
+        <td>
+            Company
+        </td>
+        <th></th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Company)
+                </td>
+            </tr>
+        }
+    
+    </tbody>
+
+</table>

@@ -1,0 +1,111 @@
+﻿@model IEnumerable<BAL.Financial>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Financial</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+
+        <div class="row" style="margin-top:100px">
+            <div class="col-md-12">
+                <div class="table-responsive wecntnrwrp">
+                    <table id="we" class="table table-striped">
+
+                        <thead>
+                            <tr>
+                                <th>GLAccountNumber</th>
+                                <th>GLAccountName</th>
+                            </tr>
+                          
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        <span class="clsGLAccountNumber"> @Html.DisplayFor(modelItem => item.GLAccountNumber)</span>
+
+                                    </td>
+                                    <td>
+                                        <span class="clsGLAccountName"> @Html.DisplayFor(modelItem => item.GLAccountName)</span>
+
+                                    </td>
+                                    @*<td>
+
+                                            @Html.ActionLink("Data  shown", "mfgpartcall", new { modelItem = item.MfgPartNum })
+                                        </td>*@
+                                    @*<a onclick="winCurrentClose('@Url.Action("mfgpartcall", "sale", new { modelItem = item.MfgPartNum })')">Data shown</a>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#we").dataTable();
+        });
+
+
+        function winOpen(url) {
+
+            //-to open the selected url at once time
+            //return window.open(url, getWinName(url), 'left=30,top=30,width=1300,height=650,toolbar=1,resizable=0');
+            popup = window.open(url, getWinName(url), 'left=30,top=30,width=1300,height=650,toolbar=1,resizable=0');
+            popup.focus();
+        }
+        function getWinName(url) {
+            return "win" + url.replace(/[^A-Za-z0-9\-\_]*/g, "");
+        }
+        function winCurrentClose(url) {
+
+            window.close();
+            window.location.href = url;
+
+        }
+        //function SetData() {
+        //    if (window.opener != null && !window.opener.closed) {
+        //        var txtName = window.opener.document.getElementById("txtmnfprtnum");
+        //        //var txtName = window.opener.document.getElementsByClassName("sorting_1");
+        //          txtName.value =$(this).getElementsByClassName("sorting_1").value;
+        //        //txtName.value = document.getElementsByClassName("sorting_1").value;
+        //    }
+        //    window.close();
+        //}
+        $('.table tbody').on('click', '.clsGLAccountNumber', function () {
+
+            var currow = $(this).closest('tr');
+            var curcol = currow.find('td:eq(0)').text();
+            var trimStr = $.trim(curcol);
+            if (window.opener != null && !window.opener.closed) {
+                var txtName = window.opener.document.getElementById("ddlGSl");
+                //var txtName = window.opener.document.getElementsByClassName("sorting_1");
+                txtName.value = trimStr;
+                //txtName.value = document.getElementsByClassName("sorting_1").value;
+            }
+            window.close();
+        });
+
+
+    </script>
+</body>
+</html>

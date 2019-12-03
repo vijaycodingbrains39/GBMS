@@ -1,0 +1,192 @@
+﻿@model IEnumerable<BAL.Lines>
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-sm-6">
+
+
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <label class="" style="width: 180px;">Min Authorized Amount:</label>
+                        <span>$5474.5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <label class="">Misc. Charges:</label>
+                        <input class="form-control" type="text" style="max-width:150px;">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <label class="">Freight:</label>
+                        <input class="form-control" type="text" style="max-width:150px;">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <label class="">Discount:</label>
+                        <input class="form-control" type="text" style="max-width:150px;">
+                        <span style="padding-top: 8px;padding-left:4px;font-weight:bold;">%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <label class="">Promotional Code:</label>
+                        <input class="form-control" type="text" style="max-width:150px;">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <label class="">Item:</label>
+                        <input id="txtproduct" onkeydown="getProductInfoAutofill()" class="form-control" type="text">
+                        <button class="btn btn-outline-secondary" type="button" style="margin-left:10px;">Search</button>
+                        <button class="btn btn-outline-secondary" type="button" style="margin-left:10px;">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <label class="">Sub Total:</label>
+                        <span>$5474.5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <label class="">Tax:</label>
+                        <span>$5474.5</span>
+                    </div> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <label class="">Total:</label>
+                        <span>$5474.5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <label class="">Total Weight:</label>
+                        <span>5474.5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Line)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LineNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.WrhsID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExtPrice)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Line)
+        </td>
+  
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LineNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qty)
+        </td>
+        <td>
+            @{
+                 var Price = '$' + item.Price;
+                @Html.DisplayFor(modelItem => Price)
+
+            }
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WrhsID)
+        </td>
+        <td>
+            @{
+                var disdount = item.Discount + '%';
+                @Html.DisplayFor(modelItem => disdount);
+            }
+
+
+        </td>
+        <td>
+            @{
+                var ExtPrice = '$' + item.ExtPrice;
+                @Html.DisplayFor(modelItem => ExtPrice)
+            }
+
+        </td>
+    </tr>
+    }
+
+</table>

@@ -1,0 +1,208 @@
+﻿@model IEnumerable<BAL.Orders>
+
+
+
+@foreach (var item in Model)
+{
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Ship To:</label>
+                    @Html.TextBox("NewShipToID", item.NewShipToID, new { @class = "form-control" })
+
+                </div>
+            </div>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Company:</label>
+                    @Html.TextBox("ShipCompany", item.ShipCompany, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>  
+        <div class="row">
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Address:</label>
+                    @Html.TextArea("ShipAddress", item.ShipAddress, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Country:</label>
+                    <select name="department" class="form-control selectpicker">
+                        <option>GENEVA</option>
+                        <option>MCTC</option>
+                        <option>MCR</option>
+                        <option>Mayor's Office</option>
+                        <option>Tourism Office</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label>City:</label>
+                    <select name="department" class="form-control selectpicker">
+                        <option>GENEVA</option>
+                        <option>MCTC</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label>State:</label>
+                    <select name="department" class="form-control selectpicker">
+                        <option>GENEVA</option>
+                        <option>MCTC</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label>Zip:</label>
+                    @Html.TextBox("ShipPostalCode", item.ShipPostalCode, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Contact:</label>
+                    <select name="department" class="form-control selectpicker">
+                        <option>GENEVA</option>
+                        <option>MCTC</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Name:</label>
+                    @Html.TextBox("ShipName", item.ShipName, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Phone:</label>
+                    @Html.TextBox("ShipPhone", item.ShipPhone, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Fax:</label>
+                    <input class="form-control" type="text">
+                    <div class="custom-control custom-checkbox" style="margin-left: 10px;padding-top: 10px;">
+                        @Html.CheckBox("isNewlyEnrolled", true)
+                        <label class="custom-control-label" for="defaultUnchecked1">Email Ack</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Email:</label>
+                    <input class="form-control" type="Email">
+                    <div class="custom-control custom-checkbox" style="margin-left: 10px;padding-top: 10px;">
+                        @Html.CheckBox("isNewlyEnrolled", true)
+                        <label class="custom-control-label" for="defaultUnchecked111">Email ASN</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Shipping Method:</label>
+                    <select name="department" class="form-control selectpicker">
+                        <option>GENEVA</option>
+                        <option>MCTC</option>
+                        <option>MCR</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Carrier:</label>
+                    @Html.TextBox("Carrier", "", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Method of Payment:</label>
+                    <select name="department" class="form-control selectpicker">
+                        <option>GENEVA</option>
+                        <option>MCTC</option>
+                        <option>MCR</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Account #:</label>
+                    @Html.TextBox("ShipmentAccountNo", item.ShipmentAccountNo, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">FOB:</label>
+                    @Html.TextBox("FOB", item.FOB, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">FOB Point:</label>
+                    <select name="department" class="form-control selectpicker">
+                        <option>GENEVA</option>
+                        <option>MCTC</option>
+                        <option>MCR</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">FOB Description:</label>
+                    @Html.TextArea("FOBDescription", item.FOBDescription, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Shipping Terms:(FOB Payment Code)</label>
+                    <select name="department" class="form-control selectpicker">
+                        <option>GENEVA</option>
+                        <option>MCTC</option>
+                        <option>MCR</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">Shipping 3rd Party Billing:</label>
+                    @Html.TextBox("ThirdPartyShipID", item.ThirdPartyShipID, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-5 inputGroupContainer">
+                <div class="input-group">
+                    <label class="">RMA Days:</label>
+                    @Html.TextBox("RMAExpirationDays", item.RMAExpirationDays, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+

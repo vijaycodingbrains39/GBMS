@@ -1,0 +1,2552 @@
+﻿@model IEnumerable<BAL.products>
+
+
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <label class="" style="width: 180px;">Min Authorized Amount:</label>
+                    <span>$5474.5</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <label class="">Misc. Charges:</label>
+                    <input class="form-control" type="text" style="max-width:150px;">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <label class="">Freight:</label>
+                    <input class="form-control" type="text" style="max-width:150px;">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <label class="">Discount:</label>
+                    <input class="form-control" type="text" style="max-width:150px;">
+                    <span style="padding-top: 8px;padding-left:4px;font-weight:bold;">%</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <label class="">Promotional Code:</label>
+                    <input class="form-control" type="text" style="max-width:150px;">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <label class="">Item:</label>
+                    <input class="form-control" type="text">
+                    <button class="btn btn-outline-secondary" type="button" style="margin-left:10px;">Search</button>
+                    <button class="btn btn-outline-secondary" type="button" style="margin-left:10px;">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <label class="">Sub Total:</label>
+                    <span>$5474.5</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <label class="">Tax:</label>
+                    <span>$5474.5</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <label class="">Total:</label>
+                    <span>$5474.5</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <label class="">Total Weight:</label>
+                    <span>5474.5</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorPartNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MfgPartNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SRP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReorderLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReorderQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxIssueQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UPCNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discontinued)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantityPerUnit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taxable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemClass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductWidth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductHeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDepth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AltVendorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AltVendorPartNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AltVendorCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductOnHold)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Service)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OperationID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StandardHours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assembly)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoutingID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Purchased)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BuildToOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BuyOnOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForSale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrackInv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdUserDefine1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdUserDefine2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdUserDefine3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdUserDefine4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdUserDefine5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastSerialNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpandedDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrintLabel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDLabelFormat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PackingLabelFormat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinSalesOrderQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecvLabelFormat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusUponReceipt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsedInKit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InspectionFormat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RMAFormat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialSeqDefKey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LotSeqDefKey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DimUOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AltProductID1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AltProductID2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasAttach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceivingNotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoutingIDWIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefaultBatchQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AllowConfigInOE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AllowBOMAddsInOE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LotControlled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaptureLot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GenerateLot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialControlled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaptureSerial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GenerateSerial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaptureMfgSerial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaptureMfgLot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LotFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExternalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExternalFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OverShipPercent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerSpecific)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AllowRevs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutoPutaway)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BackflushIfMatl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BackflushMatl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoxesPerUnit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoxEvent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoxFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoxWeightFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContainerTypeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Revision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowPODescInRecv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastModBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastModDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priority)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaterialCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OperationCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OverheadCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoxMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsPerBox)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutoReleaseFullBox)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoxesPerCont)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContEvent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScrapFactor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefPOFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssembleInWip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineFlg1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineFlg2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineFlg3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineFlg4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineFlg5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineFmt1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineFmt2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineFmt3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineFmt4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineFmt5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineLbl1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineLbl2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineLbl3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineLbl4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineLbl5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineTbl1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineTbl2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineTbl3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineTbl4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssyUserDefineTbl5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasAssyUDef)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasSMUDef)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineFlg1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineFlg2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineFlg3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineFlg4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineFlg5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineFmt1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineFmt2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineFmt3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineFmt4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineFmt5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineLbl1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineLbl2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineLbl3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineLbl4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineLbl5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineTbl1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineTbl2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineTbl3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineTbl4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineTbl5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WipValidationIfMatl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Blocked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PieceRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoxCapacityFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemClassID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemTaxCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VariantOf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasVariants)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeadTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxInventory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Udef1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Udef2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Udef3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Udef4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Udef5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Udef6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Udef7)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Udef8)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Udef9)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Udef10)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EANNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PricingType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Planner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScanCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RMAComponents)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutoRMA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CubeUOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cube)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExternalID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateFrozen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Frozen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastCycleCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InventoryRank)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HazMatName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HazMatCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesQtyMultiple)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ec_Discontinued)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DivisionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GLItemSalesAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GLItemCOGSAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GLItemInventoryAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LIFO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Average)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIFO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIFOValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIFOCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Expected)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpectedValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpectedCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Landed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LandedValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LandedCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Other)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OtherValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OtherCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Commissionable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineArg1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineArg2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineArg3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineArg4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SMUserDefineArg5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommissionRateOverride)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoxBackflushProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContBackflushProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerSRP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GLCommissionAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaptureExpireDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaptureLotDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaptureDimensions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaptureWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GLLaborCostAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GLWIPAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GLWIPMaterialAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GLWIPSubContractAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LaborCostMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GLSubContractCostAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeightUOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AllocationMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaptureLotDateMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tmpId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsMatrixItem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ECommerceNotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MfgPartNum2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MfgPartNumYearBegin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MfgPartNumYearEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartsType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MSRP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SelectAllAttributes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AttributeCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AttributeValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AttributeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SOApproval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.POApproval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchTaxable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImportFileId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarkUp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasMultipleImages)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantityQualifier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasisUnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductCode5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemAllowance1Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemAllowance1Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemAllowance1Handling)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemAllowance1Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemCharge1Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemCharge1Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemCharge1Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemCharge1Handling)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemCharge1Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LineItemRelatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemStyleNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemCharge2Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemCharge2Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemCharge2Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemAllowance2Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemAllowance1Unit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemAllowance1Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEOTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEOKeywords)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEODescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEOUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefaultSEOurl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GLWIPPieceWorkAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CapturePieceWork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AvalaraTaxCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UPCEANType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseUOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QtyTwo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QtyThree)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QtyFour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QtyFive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty2One)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty3Two)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty4Three)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty5Four)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Base2ndQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Base3rdQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Base4thQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Base5thQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseProductDepth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseProductWidth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseProductHeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseCube)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseDimUOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseWeightUOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDepth2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductWidth2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductHeight2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cube2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DimUOM2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeightUOM2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDepth3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductWidth3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductHeight3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cube3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DimUOM3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeightUOM3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDepth4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductWidth4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductHeight4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cube4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DimUOM4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeightUOM4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDepth5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductWidth5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductHeight5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cube5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DimUOM5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeightUOM5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CWSRP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CWCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsCatchWeightItem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsWarranty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WarrantyFromDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WarrantyToDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WarrantyAttachment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WarrantyDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaptureLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM2UPCNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM2UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM3UPCNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM3UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM4UPCNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM4UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM5UPCNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM5UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValidateUPCUOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AltProductID3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AltProductID4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConvertCube)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConvertCubeUOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossWeightUOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseConvertCube)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseConvertCubeUOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseGrossWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseGrossWeightUOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConvertCube2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConvertCubeUOM2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossWeight2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossWeightUOM2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConvertCube3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConvertCubeUOM3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossWeight3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossWeightUOM3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConvertCube4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConvertCubeUOM4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossWeight4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossWeightUOM4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConvertCube5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConvertCubeUOM5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossWeight5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossWeightUOM5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAllowAutoPutAwayLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM2Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM3Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM4Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UOM5Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActiveMultipleUOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StandardCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageCostUOM2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageCostUOM3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageCostUOM4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageCostUOM5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageValueUOM2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageValueUOM3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageValueUOM4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageValueUOM5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIFOCostUOM2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIFOCostUOM3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIFOCostUOM4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIFOCostUOM5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIFOValueUOM2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIFOValueUOM3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIFOValueUOM4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIFOValueUOM5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AllowDependency)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GLWIPMachineAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GLWIPMachineMaintenanceAccount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorPartNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MfgPartNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SRP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReorderLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReorderQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxIssueQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UPCNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discontinued)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantityPerUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Taxable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemClass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductWidth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductHeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDepth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltVendorID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltVendorPartNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltVendorCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductOnHold)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Service)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperationID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StandardHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assembly)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoutingID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Purchased)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BuildToOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BuyOnOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForSale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrackInv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdUserDefine1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdUserDefine2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdUserDefine3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdUserDefine4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdUserDefine5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastSerialNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpandedDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrintLabel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDLabelFormat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackingLabelFormat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MinSalesOrderQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecvLabelFormat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusUponReceipt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsedInKit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InspectionFormat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RMAFormat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SerialSeqDefKey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LotSeqDefKey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DimUOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltProductID1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltProductID2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasAttach)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceivingNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoutingIDWIP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefaultBatchQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AllowConfigInOE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AllowBOMAddsInOE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LotControlled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaptureLot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GenerateLot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SerialControlled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaptureSerial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GenerateSerial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaptureMfgSerial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaptureMfgLot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SerialFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LotFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExternalCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExternalFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OverShipPercent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerSpecific)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AllowRevs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AutoPutaway)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BackflushIfMatl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BackflushMatl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoxesPerUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoxEvent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoxFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoxWeightFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContainerTypeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Revision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShowPODescInRecv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastModBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastModDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priority)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaterialCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperationCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OverheadCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoxMethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitsPerBox)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AutoReleaseFullBox)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoxesPerCont)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContEvent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContMethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScrapFactor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefPOFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssembleInWip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineFlg1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineFlg2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineFlg3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineFlg4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineFlg5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineFmt1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineFmt2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineFmt3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineFmt4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineFmt5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineLbl1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineLbl2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineLbl3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineLbl4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineLbl5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineTbl1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineTbl2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineTbl3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineTbl4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssyUserDefineTbl5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasAssyUDef)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasSMUDef)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineFlg1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineFlg2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineFlg3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineFlg4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineFlg5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineFmt1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineFmt2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineFmt3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineFmt4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineFmt5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineLbl1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineLbl2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineLbl3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineLbl4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineLbl5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineTbl1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineTbl2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineTbl3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineTbl4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineTbl5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WipValidationIfMatl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Blocked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PieceRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoxCapacityFlag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemClassID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemTaxCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VariantOf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasVariants)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeadTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxInventory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Udef1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Udef2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Udef3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Udef4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Udef5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Udef6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Udef7)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Udef8)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Udef9)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Udef10)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EANNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PricingType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Planner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScanCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RMAComponents)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AutoRMA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CubeUOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cube)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExternalID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateFrozen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Frozen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastCycleCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InventoryRank)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HazMatName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HazMatCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesQtyMultiple)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ec_Discontinued)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DivisionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GLItemSalesAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GLItemCOGSAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GLItemInventoryAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LIFO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Average)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIFO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIFOValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIFOCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Expected)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpectedValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpectedCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Landed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LandedValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LandedCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Other)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Commissionable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineArg1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineArg2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineArg3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineArg4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SMUserDefineArg5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommissionRateOverride)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoxBackflushProductID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContBackflushProductID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerSRP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GLCommissionAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaptureExpireDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaptureLotDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaptureDimensions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaptureWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GLLaborCostAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GLWIPAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GLWIPMaterialAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GLWIPSubContractAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LaborCostMethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GLSubContractCostAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeightUOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AllocationMethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaptureLotDateMethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tmpId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsMatrixItem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ECommerceNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MfgPartNum2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MfgPartNumYearBegin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MfgPartNumYearEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartsType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MSRP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SelectAllAttributes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AttributeCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AttributeValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AttributeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SOApproval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.POApproval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchTaxable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImportFileId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MarkUp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasMultipleImages)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantityQualifier)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BasisUnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductCode5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemAllowance1Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemAllowance1Rate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemAllowance1Handling)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemAllowance1Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemCharge1Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemCharge1Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemCharge1Rate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemCharge1Handling)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemCharge1Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LineItemRelatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemStyleNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemCharge2Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemCharge2Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemCharge2Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemAllowance2Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemAllowance1Unit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemAllowance1Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEOTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEOKeywords)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEODescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEOUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefaultSEOurl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GLWIPPieceWorkAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CapturePieceWork)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AvalaraTaxCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UPCEANType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseUOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QtyTwo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QtyThree)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QtyFour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QtyFive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qty2One)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qty3Two)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qty4Three)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qty5Four)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Base2ndQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Base3rdQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Base4thQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Base5thQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseProductDepth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseProductWidth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseProductHeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseCube)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseDimUOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseWeightUOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDepth2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductWidth2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductHeight2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cube2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DimUOM2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeightUOM2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDepth3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductWidth3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductHeight3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cube3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DimUOM3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeightUOM3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDepth4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductWidth4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductHeight4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cube4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DimUOM4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeightUOM4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDepth5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductWidth5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductHeight5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cube5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DimUOM5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeightUOM5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CWSRP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CWCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsCatchWeightItem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsWarranty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WarrantyFromDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WarrantyToDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WarrantyAttachment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WarrantyDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaptureLength)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM2UPCNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM2UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM3UPCNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM3UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM4UPCNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM4UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM5UPCNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM5UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValidateUPCUOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltProductID3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltProductID4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvertCube)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvertCubeUOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrossWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrossWeightUOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseConvertCube)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseConvertCubeUOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseGrossWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseGrossWeightUOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvertCube2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvertCubeUOM2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrossWeight2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrossWeightUOM2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvertCube3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvertCubeUOM3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrossWeight3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrossWeightUOM3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvertCube4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvertCubeUOM4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrossWeight4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrossWeightUOM4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvertCube5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConvertCubeUOM5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrossWeight5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrossWeightUOM5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAllowAutoPutAwayLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM2Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM3Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM4Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM5Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActiveMultipleUOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StandardCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageCostUOM2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageCostUOM3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageCostUOM4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageCostUOM5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageValueUOM2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageValueUOM3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageValueUOM4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageValueUOM5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIFOCostUOM2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIFOCostUOM3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIFOCostUOM4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIFOCostUOM5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIFOValueUOM2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIFOValueUOM3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIFOValueUOM4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIFOValueUOM5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AllowDependency)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GLWIPMachineAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GLWIPMachineMaintenanceAccount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>*@

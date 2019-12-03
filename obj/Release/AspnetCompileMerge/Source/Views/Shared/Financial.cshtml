@@ -1,0 +1,100 @@
+﻿@model IEnumerable<BAL.Financial>
+
+
+
+    <div class="row financial" >
+
+        <div class="col-md-6">
+            @*<a href="@Url.Action("/sale/FinancialData/")"> </a>*@
+              <label onclick="winOpen('/sale/FinancialData/')">GL Sales Account</label>
+
+        </div>
+        <div class="col-md-6">
+            <select id="ddlGSl" class="form-control">
+                @foreach (var item in Model)
+                {
+                 var value=   @item.GLAccountNumber +',' + @item.GLAccountName;
+                <option value="">  @value   </option>
+                }
+             </select>
+        </div>
+    </div>
+    <div class="row financial">
+
+        <div class="col-md-6">
+
+            <label>GL Service Account</label>
+
+        </div>
+        <div class="col-md-6">
+            <select   class="form-control">
+                @foreach (var item in Model)
+                {
+                    var value = @item.GLAccountNumber + ',' + @item.GLAccountName;
+                    <option value="">  @value   </option>
+                }
+     </select>
+   </div>
+    </div>
+    <div class="row financial">
+
+        <div class="col-md-6 ">
+
+            <label>GL Commission Account</label>
+
+        </div>
+        <div class="col-md-6">
+            <select  class="form-control">
+                @foreach (var item in Model)
+                {
+                    var value = @item.GLAccountNumber + ',' + @item.GLAccountName;
+                    <option value="">  @value   </option>
+                }
+
+
+            </select>
+        </div>
+    </div>
+    <div class="row financial">
+
+        <div class="col-md-6 ">
+
+            <label>Prepaid Account</label>
+
+        </div>
+        <div class="col-md-6 ">
+            <select class="form-control">
+                @foreach (var item in Model)
+                {
+                    var value = @item.GLAccountNumber + ',' + @item.GLAccountName;
+                    <option value="">  @value   </option>
+                }
+
+
+            </select>
+        </div>
+    </div>
+    <div class="row financial">
+
+        <div class="col-md-6 ">
+
+            <label>GL Clearing Account</label>
+
+        </div>
+        <div class="col-md-6">
+            <select class="form-control">
+                @foreach (var item in Model)
+                {
+                    var value = @item.GLAccountNumber + ',' + @item.GLAccountName;
+                    <option value="">  @value   </option>
+                }
+
+
+            </select>
+        </div>
+    </div>
+
+
+
+
+

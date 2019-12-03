@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BAL.CommissionDetails>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.salesresponsible)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CplanName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Split)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstCommission)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PayPercentAtShipping)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PayPercentAtApproval)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.salesresponsible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CplanName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Split)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstCommission)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PayPercentAtShipping)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PayPercentAtApproval)
+        </td>
+       
+    </tr>
+}
+
+</table>

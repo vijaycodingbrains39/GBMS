@@ -1,0 +1,579 @@
+﻿@using System.Data;
+@using BAL;
+
+@model IEnumerable<BAL.OrderAtTable>
+
+@{
+    ViewBag.Title = "opensaleorderCntrl";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>opensaleorderCntrl</h2>
+
+
+
+
+@{
+    Layout = null;
+    DataSet ds = new DataSet();
+
+
+    //var ordersattbl = (IEnumerable<OrderAtTable>)ViewData["OrderPlacedData"];
+    //var ordersattbl = (IEnumerable<OrderAtTable>)ViewData["OrderdataWithNewID"];
+
+    DataTable dt = new DataTable();
+
+    if (ViewData["OrderPlacedData"] != null)
+    {
+        ViewBag.Dataset = (DataSet)ViewData["OrderPlacedData"];
+        ds = (DataSet)ViewData["OrderPlacedData"];
+        dt = ds.Tables[0];
+    }
+    else if (ViewData["OrderdataWithNewID"] != null)
+    {
+        ViewBag.Dataset = (DataSet)ViewData["OrderdataWithNewID"];
+        ds = (DataSet)ViewData["OrderdataWithNewID"];
+        var orderID = ViewData["NewOrderID"].ToString();
+        dt = ds.Tables[0];
+    }
+    else
+    {
+        ds = (DataSet)ViewData["NewOrderEntry"];
+        dt = ds.Tables[0];
+    }
+}
+
+    <div class="container">
+        <div class="row icon_container">
+            <input id="btncreateorder" type="button" onclick="SaveOrder()" value="save" class="btn btn-primary" />
+            <i class="fa fa-play" aria-hidden="true"></i>
+            <i class="fa fa-play reverse" aria-hidden="true"></i>
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            <i class="fa fa-step-forward" aria-hidden="true"></i>
+            <i class="fa fa-step-backward" aria-hidden="true"></i>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <table id="OrdertblID" class="Ordertable table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Company</th>
+                            <th>OrderDate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DataRow item in dt.Rows)
+                            {
+                            <tr>
+                                     <td class="orderid">
+                                         @item["ID"].ToString()
+                                     </td>
+                                     <td>
+                                         @item["OrderDate"].ToString()
+                                     </td>
+                                     <td>
+                                         @item["Company"].ToString()
+                                     </td>
+                            </tr>
+                         }
+                    </tbody>
+                </table>
+               
+                @*@Html.Partial("Partials/_ordertblprtial", ordersattbl)*@
+            </div>
+            <input type="button" class="btn btn-success" onclick="SaveOrder()" value="save" />
+            <div class=" col-md-8">
+                <div class="tab" role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" id="tab_wrappers" role="tablist">
+                        <li role="presentation" class="active"><a href="#Header" aria-controls="home" role="tab" data-toggle="tab">Header</a></li>
+                        <li role="presentation"><a href="#Shipping" aria-controls="profile" role="tab" data-toggle="tab">Shipping</a></li>
+                        <li role="presentation"><a href="#Lines" aria-controls="messages" role="tab" data-toggle="tab">Lines</a></li>
+                        <li role="presentation"><a href="#Notes" aria-controls="profile" role="tab" data-toggle="tab">Notes</a></li>
+                        <li role="presentation"><a href="#Related Docs" aria-controls="messages" role="tab" data-toggle="tab">Related Docs</a></li>
+                        <li role="presentation"><a href="#Attachments" aria-controls="profile" role="tab" data-toggle="tab">Attachments</a></li>
+                        <li role="presentation"><a href="#CC#" aria-controls="messages" role="tab" data-toggle="tab">CC#</a></li>
+                        <li role="presentation"><a href="#Section7" aria-controls="messages" role="tab" data-toggle="tab">Section </a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content tabs">
+                        <div role="tabpanel" class="tab-pane fade in active" id="Header">
+                            <form class="well form-horizontal" action=" " method="post" id="contact_form">
+                                <!-- Form Name -->
+                                <legend><h2><b>Order Information</b></h2></legend><br>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4 disp_inline"><b>Sales Order ID:</b> <input type="text" value="@ViewData["NewOrderID"].ToString()" id="salesorderID" />  </div>
+                                        <div class="col-md-4"><b>Status:</b> <span id="spnOrdersts"></span> </div>
+                                        <div class="col-md-4"><b>BackOrder </b>  <span id="BackOrder"></span>   </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4"><b>Entered By:</b> <span id="SpnEnteredBy"></span>  </div>
+                                        <div class="col-md-4"><b>Authorized By:</b> <span id="SpnAuthorizedBy"></span> </div>
+                                        <div class="col-md-4"><b>Refrence:</b> <span id="SpnReference"></span></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Order Date</label>
+                                            <input class="form-control" type="text" id="OrderDate">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Customer PO</label>
+                                            <input id="custPO" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Sales Rep.</label>
+                                            <input class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Alternate PO</label>
+                                            <input id="altpo" class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Customer Service Rep.</label>
+                                            <select name="department" class="form-control selectpicker"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Required Date</label>
+                                            <input class="form-control" type="text" id="RequiredDate">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Warehouse</label>
+                                            <select id="ddlwarehouse" name="department" class="form-control selectpicker"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Priority</label>
+                                            <select name="ddlPriority" class="form-control selectpicker">
+                                                <option>Yes</option>
+                                                <option>No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Department</label>
+                                            <select id="ddlDepartment" name="department" class="form-control selectpicker"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Division</label>
+                                            <select id="ddlDivisions" name="department" class="form-control selectpicker"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Back Orders</label>
+                                            <select name="department" class="form-control selectpicker">
+                                                <option>Yes</option>
+                                                <option>No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Sales Order</label>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                                                <label class="custom-control-label" for="defaultUnchecked">Pre approved</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">PartialOK</label>
+                                            <select name="ddlPartialOK" class="form-control selectpicker">
+                                                <option>Yes</option>
+                                                <option>No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5 inputGroupContainer">
+                                        <div class="input-group">
+                                            <label class="">Auto Shipping & Auto Invoice</label>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
+                                                <label class="custom-control-label" for="defaultUnchecked1">Pre approved</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="row">
+                                        <div class="col-md-5"></div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5"></div>
+
+                                    </div>*@
+                                <!-- Text input-->
+                                <!-- Text input-->
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6 float-left">
+                                            <legend><h2><b>Bill To</b></h2></legend><br>
+                                            <div class="row">
+                                                <div class="col-sm-10 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <label class="">Customer:</label>
+                                                        <input id="CustomerID" onkeydown="getautocomplete()" class="form-control" type="text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-10 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <label class="">Company:</label>
+                                                        @*<input id="OrderCompany"  type="text">*@
+                                                        <span id="OrderCompany"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-10 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <label class="">Address:</label>
+                                                        @*<input id="address" class="form-control" type="text">*@
+                                                        <span id="address"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-10 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <label class="">Attention:</label>
+                                                        @*<input      class="form-control" type="text">*@
+                                                        <span id="contactName"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-10 inputGroupContainer">
+                                                    <div class="input-group col-md-8 float-right">
+                                                        <select name="department" class="form-control selectpicker">
+                                                            <option>Yes</option>
+                                                            <option>No</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-10 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <label class="">Name:</label>
+                                                        <input id="Name" class="form-control" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-10 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <label class="">Phone:</label>
+                                                        <input class="form-control" id="phonenumber" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <label class="">Fax:</label>
+                                                        <input id="idfax" class="form-control" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-10 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <label class="">Email:</label>
+                                                        <input class="form-control" id="ContactEmail" type="Email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 float-left">
+                                            <div class="">
+                                                <legend><h2><b>Terms & Conditions</b></h2></legend><br>
+                                                <div class="row">
+                                                    <div class="col-sm-10 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <label class="">Payment Terms:</label>
+                                                            @*<input class="form-control" id="paymentterm" type="text">*@
+                                                            <select id="ddlpaymentterm" class="form-control"></select>
+                                                            @*<span id="paymentterm"> </span>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-10 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <label class="">Tax Code</label>
+                                                            <select id="ddtaxcode" class="form-control selectpicker"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-10 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <label class="">Tax Rate</label>
+                                                            @*<input id="TaxRate" class="form-control" type="text">*@
+                                                            <span id="TaxRate"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-10 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <label class="">Currency</label>
+                                                            <select id="ddlCurrency" class="form-control selectpicker"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-10 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <label class="">Exchange Rate</label>
+                                                            <input id="txtexchange" class="form-control" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="">
+                                                <legend><h2><b>Repair Order</b></h2></legend><br>
+                                                <div class="row">
+                                                    <div class="col-sm-10 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <label class="">Item Model:</label>
+                                                            <input class="form-control" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-10 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <label class="">Item Number:</label>
+                                                            <input class="form-control" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-10 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <label class="">Item Serial Number:</label>
+                                                            <input class="form-control" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-10 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <label class="">Item Description:</label>
+                                                            <input class="form-control" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </form>
+
+
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Shipping">
+                            <h3>Section 2</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque.</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Lines">
+                            <h3>Section 3</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque.</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Notes">
+                            <h3>Section 4</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque.</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Related Docs">
+                            <h3>Section 5</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque.</p>
+                        </div> <div role="tabpanel" class="tab-pane fade" id="Section6">
+                            <h3>Section 6</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque.</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Attachments">
+                            <h3>Section 7</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque.</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="CC#">
+                            <h3>Section 8</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/jqui/Order.js"></script>
+    <script>
+        //    $('.ordertable tbody ').on('click', 'tr', function () {
+
+        //    $.ajax({
+
+        //        type: "get",
+        //        contenttype: "application/json; charset=utf-8",
+        //        url: "/sale/opensaleordercntrl/",
+        //        data: "{'id':'data'}",
+        //        success: function (res) {
+
+        //            alert("open fired ");
+
+        //        }
+
+
+        //    });
+
+        //});
+        $('.Ordertable tbody').on('click', '.OrderId', function () {
+
+            var currow = $(this).closest('tr');
+            var curcol = currow.find('td:eq(0)').text();
+            var trimStr = $.trim(curcol);
+            var objdata = '';
+            vardate = '';
+            var address = '';
+
+            $.ajax({
+                type: "POST",
+                contenttype: "application/json; charset=utf-8",
+                url: "/sale/GetdataByOrderIdjson/",
+                data: 'OrderId=' + trimStr,
+                success: function (resp) {
+                    //console.log("result", resp);
+                    objdata = JSON.parse(resp);
+                    var d = objdata[0].OrderDate.slice(0, 10).split('-');
+                    vardate = d[1] + '/' + d[2] + '/' + d[0];
+                    address = objdata[0].Address + ',' + objdata[0].City + ',' + objdata[0].Region + ',' + objdata[0].Country + ',' + objdata[0].PostalCode;
+                    $('#salesorderID').val(objdata[0].ID);
+                    $('#spnOrdersts').html(objdata[0].OrderStatus);
+                    $('#SpnEnteredBy').html(objdata[0].EmployeeID);
+                    $('#SpnAuthorizedBy').html(objdata[0].AuthorizedBy);
+                    $('#SpnReference').val(objdata[0].Reference);
+                    $('#OrderDate').val(vardate);
+                    $('#CustomerID').val(objdata[0].CustomerID);
+                    $('#OrderCompany').html(objdata[0].Company);
+                    $('#address').html(address);
+                    $('#contactName').html(objdata[0].ContactName);
+                    $('#Name').val(objdata[0].ContactName);
+                    $('#phonenumber').val(objdata[0].Phone);
+                    $('#ContactEmail').val(objdata[0].ContactEmail);
+                    //$('#paymentterm').val(objdata[0].OrderTermsCode);
+                    $('#TaxRate').html(objdata[0].TaxRate);
+                    $('#Name').val(objdata[0].ContactName);
+                    //$("#ddlwarehouse select").val("DEMO").change();
+                    $('#ddlwarehouse').val(objdata[0].WrhsID).attr("selected", "selected");
+                    $('#ddlDepartment').val(objdata[0].DepartmentID).attr("selected", "selected");
+                    $('#ddlDivisions').val(objdata[0].DivisionID).attr("selected", "selected");
+                    $('#ddlCurrency').val(objdata[0].CurrencyID).attr("selected", "selected");
+                    $('#ddlpaymentterm').val(objdata[0].OrderTermsCode).attr("selected", "selected");
+                    $('#ddtaxcode').val(objdata[0].SalesTaxCodeID).attr("selected", "selected");
+
+                }
+            });
+            alert("Form Is Opend");
+        });
+
+
+
+        $('#RequiredDate').click(function () {
+
+            $('#RequiredDate').datepicker();
+
+        });
+        $('#OrderDate').click(function () {
+
+            $('#OrderDate').datepicker();
+
+        });
+
+        @*var varOrderPlacedData= @Html.Raw(Json.Encode(ViewData["OrderPlacedData"]));
+
+
+        if (varOrderPlacedData != null) {
+
+
+            var html = '';
+
+            var result = JSON.parse(varOrderPlacedData);
+                    for (var j = 0; j < result.length; j++) {
+
+                        html += `<tr>
+
+                                                         <td>${result[j].ID}</td>
+                                                         <td>${result[j].OrderDate}</td>
+                                                         <td>${result[j].Company}</td>
+                                                       
+                                                          </tr>`;
+                    }
+                    $('.tbody').html(html);
+
+        }*@
+
+
+
+
+    </script>
